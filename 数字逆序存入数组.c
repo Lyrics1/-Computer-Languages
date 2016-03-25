@@ -9,7 +9,7 @@ void main()
 		y=x%10;
 		x=(x-y)/10;
 		i++; 
-	}            //
+	}            //循环完x=0
 	printf("i=%d\n",i);
 	int a[i];
 	for (k=0;k<i;k++)
