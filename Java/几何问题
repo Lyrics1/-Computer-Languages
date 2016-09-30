@@ -1,0 +1,95 @@
+import java.util.*;
+
+public class Regylarpolygon {
+	private int  n;
+	private double side;
+	private double x;
+	private double y;
+	
+	final double PI=3.14;
+	public void  Regylarpolygon()
+	{
+		this.n=3;
+		this.side=1;
+		this.x=0;
+		this.y=0;
+	}
+	public void Regylarpolygon(int n,double side,double x,double y)
+	{
+		this.n=n;
+		this.side=side;
+		this.x=x;
+		this.y=y;
+	}
+
+	public void Regylarpolygon(int n,double side)
+	{
+		this.n=n;
+		this.side=side;
+		this.x=0;
+		this.y=0;
+	}
+	public int getN(){
+		return n;
+	}
+	public void changeN(int n){
+		this.n=n;
+	}
+	public double getSide()
+	{
+		return  side;
+	}
+	public void changeSide(double side){
+		this.side=side;
+	}
+	public  double getX(){
+		return x;
+	}
+	public void changeX(double x){
+		this.x=x;
+	}
+	public  double getY(){
+		return y;
+	}
+	public void changeY(double y){
+		this.y=y;
+	}
+	public double getCircle()
+	{
+		return (n*side);
+	}
+	public double getArea()
+	{
+		return ((n*Math.pow(side,2))/4*(Math.tan(PI/n)));
+	}
+	
+	public static void main(String[] args){
+		
+		Scanner input=new Scanner(System.in);
+		Regylarpolygon regylarpolygon=new Regylarpolygon();
+		regylarpolygon.Regylarpolygon();
+		
+		System.out.println("  默认无参    n:"+regylarpolygon.getN()+"side"+regylarpolygon.getSide()+"x:"+regylarpolygon.getX()+"Y:"+regylarpolygon.getY());
+		
+		int n;double side;double x;double y;
+		System.out.println("ENter the n and side :");
+		n=input.nextInt();
+		side=input.nextDouble();
+		regylarpolygon.Regylarpolygon(n, side);
+		
+		System.out.println("   2 ;n:"+regylarpolygon.getN()+"side"+regylarpolygon.getSide()+"x:"+regylarpolygon.getX()+"Y:"+regylarpolygon.getY());
+
+		System.out.println("ENter the n and side and x and y :");
+		x=input.nextDouble();
+		y=input.nextDouble();
+		regylarpolygon.Regylarpolygon(n, side, x, y);
+		
+		System.out.println("  4  n:"+regylarpolygon.getN()+"side"+regylarpolygon.getSide()+"x:"+regylarpolygon.getX()+"Y:"+regylarpolygon.getY());
+
+		
+		
+		
+		
+	}
+	
+}
