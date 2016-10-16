@@ -1,0 +1,48 @@
+package prictice;
+
+import java.util.*;
+public class QuadraticEquation {
+	private double a,b,c;
+	public QuadraticEquation(double a,double b,double c)
+	{
+		this.a=a;
+		this.b=b;
+		this.c=c;
+	}
+	
+	public double geta(){
+		return a;
+	}
+	public double getb(){
+		return b;
+	}
+	public double getc(){
+		return c;
+	}
+	public double getDiscriminant(){
+			return Math.pow(b, 2)-4*a*c;
+	}
+	public double getRoot1(){
+		return (-b+Math.pow(getDiscriminant(), 0.5))/(2.0*a);
+	}
+	
+	public double getRoot2(){
+		return (-b-Math.pow(getDiscriminant(), 0.5))/(2.0*a);
+	}
+	public static void main(String[] args){
+		@SuppressWarnings("resource")
+		Scanner input=new Scanner(System.in);
+		double a=input.nextDouble();
+		double b=input.nextDouble();
+		double c=input.nextDouble();
+		QuadraticEquation quadraticEquation=new QuadraticEquation(a, b, c);
+		
+		if(quadraticEquation.getDiscriminant()>0){
+			System.out.println("x1="+quadraticEquation.getRoot1());
+			System.out.println("x2="+quadraticEquation.getRoot2());
+		}
+		else if(quadraticEquation.getDiscriminant()==0)
+			System.out.println("x1=x2="+quadraticEquation.getRoot1());
+		else System.out.println(" The equation has no roots ");
+	}
+}
