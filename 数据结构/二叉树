@@ -1,0 +1,157 @@
+#include<stdio.h>
+#include<stdlib.h> 
+#define M 20
+
+//顺序存储 
+//typedef struct
+//{
+//	int tree[M+1];
+//	int last;
+// }Bittree;
+ int Two=0;
+typedef struct Nodetree
+{
+	int data;
+	struct Nodetree *Lchild;
+	struct Nodetree *Rchild;
+ } *Bitree;
+ 
+ 
+ //函数声明
+ void creat(Bitree *root);
+ void output(Bitree root);
+ void preorder(Bitree root);
+ void change(Bitree root);
+ int path(Bitree root,char ph[],int len);
+ int treedepth(Bitree root);
+ void print(Bitree root,int loop);	
+  
+ 	//创建 
+ 	void creat(Bitree *root)
+ {
+ 	char ch;
+ 	ch=getchar();
+	if(ch=='#')
+		*root=NULL;
+	else {
+	 		*root=(Bitree)malloc(sizeof(struct Nodetree));
+	 		(*root)->data=ch;
+	 		creat(&((*root)->Lchild));
+	 		creat(&((*root)->Rchild));
+		 }
+ }
+ 
+ //输出 
+ void output(Bitree root)
+ {
+ 	if(root)
+ 	{
+ 			printf("%c",root->data);
+ 	output(root->Lchild);
+ 	output(root->Rchild);
+	 }
+ 
+ }
+ //遍历得到度为2的 
+ void preorder(Bitree root)
+ {
+ 	if(root)
+ 	{
+ 		if(root->Lchild!=NULL && root->Rchild!=NULL)
+ 			Two++;
+ 		printf("%c",root->data); 
+ 		preorder(root->Lchild);
+ 		preorder(root->Rchild);
+	 }
+	
+ }
+ //左右交换 
+ 	void change(Bitree root)
+ 	{
+ 		Bitree temp; 
+ 		if(root)
+ 		{
+ 			temp=root->Lchild;
+ 			root->Lchild=root->Rchild;
+ 			root->Rchild=temp;
+ 			change(root->Lchild);
+ 			change(root->Rchild);
+ 			
+		 }
+	 }
+ 
+//按路径输出 
+int path(Bitree root,char ph[],int len)
+ {
+ 	int i;
+	if(root)
+	{
+		if(root->Lchild==NULL && root->Rchild==NULL)
+		{	ph[len]=root->data;
+			printf("%c: ",ph[len]); 
+			for(i=0;i<len;i++)
+				printf("%c",ph[i]);
+			printf("\n");
+			return 0;
+		}
+		ph[len]=root->data;
+		path(root->Lchild,ph,len+1);
+		path(root->Rchild,ph,len+1);
+	 } 	
+ }
+ //shu的深度 
+ int treedepth(Bitree root)
+ {
+ 	int l,r,h;
+ 	if(root)
+ 		return 0;
+	l=treedepth(root->Lchild);
+	r=treedepth(root->Rchild);
+	h=l>r? l:r;
+	return h+1;	
+ }
+ 
+ //以二元组输出（A,1)
+ void print(Bitree root,int loop)
+ {
+ 	if(root)
+ 	{
+ 		printf("(%c,%d) ",root->data,loop);
+ 		print(root->Lchild,loop+1);
+ 		print(root->Rchild,loop+1);
+ 		
+	 }
+  } 
+  //叶子节点的数目 
+  int leafnum(Bitree root)
+  {
+  	int l,r;
+  	if(root==NULL) 
+  		return 0;
+  	if(root->Lchild==NULL && root->Rchild==NULL)
+  		return 1;
+  	l=leafnum(root->Lchild);
+  	r=leafnum(root->Rchild);
+  	return l+r;
+  }
+ int main()
+ 	{
+ 		Bitree root;
+ 		creat(&root);	
+ 		preorder(root);
+ 		printf("\n");
+ 		printf("%d\n\n",Two);
+ 		output(root);
+ 		printf("\n");
+ 		change(root);
+ 		preorder(root);
+ 		printf("\n");
+		int depth=treedepth(root);
+		char ph[depth];
+		path(root,ph,depth);
+		print(root,1);
+		int leaf=leafnum(root);
+		printf("%d",leaf);
+ 		
+	 }
+ 	
