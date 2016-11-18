@@ -1,0 +1,39 @@
+package prictice;
+import java.util.*;
+public class Compare {
+		public static void main(String[] arg){
+			Scanner input=new Scanner(System.in);
+			String[] str=new String[2];
+			str[0]=input.nextLine();
+			str[1]=input.nextLine();
+			String[] file1=str[0].split(" ");
+			String[] file2=str[1].split(" ");
+			Compare f1=new Compare();
+			 
+			f1.print(f1.toString(file1));
+			f1.print(f1.toString(file2));
+			
+		}
+		
+		public String toString(String[] file){
+				int i,length;
+				length=file[0].length()>file[1].length() ? file[0].length():file[1].length();
+				String common = "";
+				for(i=0;i<length;i++){
+					if(file[0].charAt(i)==file[1].charAt(i))
+						common+=file[0].charAt(i);
+					else break;
+				}
+				return common;		
+		}
+		public void print(String str)
+		{
+			
+			if(str=="")
+				System.out.println("No common prefix");
+			else System.out.println("The common prefix is "+str);
+		}
+		
+		//质数
+		
+}
