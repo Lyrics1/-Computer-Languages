@@ -1,0 +1,29 @@
+package prictice;
+import java.util.*;
+public class Rpentagon extends Shape {
+	private double a;
+	public static void main(String[] args){
+		Scanner input=new Scanner(System.in);
+		double a=input.nextDouble();
+		Rpentagon rpentagon=new Rpentagon();
+		System.out.println(rpentagon.getArea());
+		
+		
+		
+	}
+	public double getArea() {
+		// TODO 自动生成的方法存根
+		System.out.println(Math.tan(36/180));
+		double area=5*Math.pow(a, 2)/(4*Math.tan((36.0f/360)*3.14));
+		return area;
+	}
+
+	@Override
+	public double getPerimeter() {
+		
+		
+		// TODO 自动生成的方法存根
+		return ((1/4)*Math.pow(a,2)*Math.sqrt((25+10*Math.sqrt(5))));
+	}
+	
+}
