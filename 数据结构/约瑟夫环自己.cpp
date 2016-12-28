@@ -10,13 +10,13 @@ LinkList  creat_List(int n)
 {	
 	LinkList H,p,r;
 	H=(LinkList)malloc(sizeof(LinkList));
-//	scanf("%d",&H->passward);
+	scanf("%d",&H->passward);
 	H->number=1;
 	r=p=H;
 	int i;
 	for(i=0;i<n-1;i++){
 		p=(LinkList)malloc(sizeof(LinkList));
-	//	scanf("%d",&p->passward);
+		scanf("%d",&p->passward);
 		p->number=i+2;
 		r->next=p;
 		r=p;
@@ -31,28 +31,17 @@ void out_passward(LinkList H,int m,int n)
 	temp=p=r=H;
 	for(j=1;j<=n;j++)
 	{		
-			pass=0;
-	/*		for(i=1;i<m;i++)
-		{	
-			r=p;
-			p=p->next;
-		}	
-		temp=p;
-		p=p->next;
-		printf("%d ",temp->number);
-		m=temp->passward;
-		r->next=p;
-		free(temp);*/
+			
+	
 		for(i=1;i<=m;i++)
-		{
-			temp=p;
+		{temp=p;
 			if(i==m)
 				{
 					p=p->next;
 					r->next=p;
 					printf("%d ",temp->number);
-				//	m=temp->passward;
-					//printf("%d  ",temp->passward); 
+					m=temp->passward;
+					
 					free(temp);	
 					break;
 				}
